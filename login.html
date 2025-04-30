@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cosmic Login</title>
+    <style>
+        /* --- Basic Reset & Body Styling --- */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html, body {
+            height: 100%;
+            overflow: hidden; /* Prevent scrollbars during warp */
+        }
+
+        body {
+            background-color: #0a041a; /* Deep space blue/purple */
+            color: #0f0; /* Classic terminal green */
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            font-size: 16px;
+            line-height: 1.6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative; /* For star positioning */
+        }
+
+        /* --- Starfield Background --- */
+        /* Create multiple layers of stars using box-shadow */
+        .stars {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 1px;
+            height: 1px;
+            background: transparent;
+            box-shadow: var(--stars-small);
+            /* Combine twinkle and movement */
+            animation: twinkle 1.5s infinite alternate, move-stars 100s linear infinite;
+        }
+
+        .stars.medium {
+            width: 2px;
+            height: 2px;
+            box-shadow: var(--stars-medium);
+            /* Different durations for parallax */
+            animation: twinkle 2s infinite alternate, move-stars 75s linear infinite;
+        }
+
+        .stars.large {
+            width: 3px;
+            height: 3px;
+            box-shadow: var(--stars-large);
+            /* Different durations for parallax */
+            animation: twinkle 2.5s infinite alternate, move-stars 50s linear infinite;
+        }
+
+        /* Generate random star positions using CSS variables (can be long) */
+        /* We'll generate these with JS for better randomness and quantity */
+
+        @keyframes twinkle {
+            from { opacity: 0.5; }
+            to { opacity: 1; }
+        }
+
+        /* --- Star Movement Animation --- */
+        @keyframes move-stars {
+            from { transform: translateY(0); }
+            to { transform: translateY(-100vh); } /* Move up one screen height */
+        }
+
+        /* --- Signup Container --- */
+        .signup-container {
+            background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent black */
+            border: 1px solid #0f0;
+            padding: 30px;
+            width: 90%;
+            max-width: 650px;
+            min-height: 300px;
+            box-shadow: 0 0 15px rgba(0, 255, 0, 0.3);
+            position: relative; /* Ensure it's above stars */
+            z-index: 10;
+            opacity: 1;
+            transition: opacity 0.5s ease-out;
+        }
+
+        .signup-container.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        /* --- Terminal Output --- */
+        #terminal-output {
+            height: 200px; /* Adjust as needed */
+            overflow-y: auto;
+            margin-bottom: 15px;
+            word-wrap: break-word;
+        }
+
+        #terminal-output p {
+            margin-bottom: 5px;
+        }
+
+        #terminal-output .prompt-line {
+            color: #aaa; /* Grey for past prompts */
+        }
+        #terminal-output .prompt-symbol {
+            color: #0ff; /* Cyan prompt symbol */
+            margin-right: 8px;
+        }
+        #terminal-output .user-input {
+            color: #fff; /* White for user's entered text */
+        }
+        #terminal-output .system-message {
+            color: #0f0; /* Green for system messages */
+        }
+        #terminal-output .error-message {
+            color: #f00; /* Red for errors */
+            font-weight: bold;
+        }
+        #terminal-output .success-message {
+            color: #0f0; /* Green for success */
+            font-weight: bold;
+        }
+
+        /* --- Terminal Input --- */
+        .input-line {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .prompt-symbol {
+            color: #ff66c4; /* Pink/magenta arrow color */
+            margin-right: 8px;
+            font-size: 20px;
+        }
+
+        #terminal-input {
+            background: transparent;
+            border: none;
+            color: #ffffff; /* White text for input */
+            font-family: inherit;
+            font-size: inherit;
+            flex-grow: 1;
+            outline: none;
+            padding: 5px 0;
+        }
+
+        /* New styles for prompts and input area */
+        .input-prompt {
+            color: #2cffdf; /* Teal/cyan color for prompts */
+            font-size: 18px;
+            margin-bottom: 10px;
+            display: block;
+        }
+        
+        .continue-btn {
+            background-color: transparent;
+            border: 1px solid #2cffdf;
+            color: #2cffdf;
+            border-radius: 20px;
+            padding: 8px 20px;
+            font-family: inherit;
+            cursor: pointer;
+            margin-left: 15px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        
+        .continue-btn:hover {
+            background-color: rgba(44, 255, 223, 0.2);
+        }
+        
+        .input-container {
+            display: flex;
+            align-items: center;
+            width: 100%;
+        }
+
+        /* Simple blinking cursor imitation */
+        #terminal-input:focus {
+            animation: blink 1s step-end infinite;
+        }
+
+        @keyframes blink {
+            50% {
+                border-right: 2px solid #0f0;
+            }
+        }
+
+        /* --- Warp Speed Animation --- */
+        #warp-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #000;
+            z-index: 100;
+            overflow: hidden;
+            display: none; /* Initially hidden */
+            perspective: 400px; /* For 3D effect */
+        }
+
+        .warp-star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background-color: white;
+            border-radius: 50%;
+            /* JS will set top, left, and animation */
+        }
+
+        @keyframes warp-travel {
+            from {
+                transform: translateZ(0) scale(1);
+                opacity: 1;
+            }
+            to {
+                transform: translateZ(600px) scale(3); /* Move towards viewer and grow */
+                opacity: 0;
+            }
+        }
+
+        /* --- Final Success Screen --- */
+         #success-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #fff; /* Fade to white */
+            z-index: 101; /* Above warp */
+            display: none; /* Initially hidden */
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            color: #333;
+            text-align: center;
+            font-size: 1.5em;
+            opacity: 0;
+            animation: fade-in 1s forwards;
+         }
+
+         @keyframes fade-in {
+             from { opacity: 0; }
+             to { opacity: 1; }
+         }
+
+         #success-screen img {
+             width: 150px; /* Adjust size as needed */
+             height: auto;
+             margin-bottom: 20px;
+         }
+
+    </style>
+</head>
+<body>
+    <!-- Starfield Layers -->
+    <div class="stars"></div>
+    <div class="stars medium"></div>
+    <div class="stars large"></div>
+
+    <!-- Signup Terminal -->
+    <div class="signup-container" id="signup-box">
+        <div id="terminal-output">
+            <!-- Messages will appear here -->
+        </div>
+        <div class="input-line">
+            <span class="prompt-symbol" id="prompt">→</span>
+            <input type="text" id="terminal-input" autofocus autocomplete="off">
+        </div>
+    </div>
+
+    <!-- Warp Speed Effect -->
+    <div id="warp-overlay">
+        <!-- Warp stars will be added here by JS -->
+    </div>
+
+    <!-- Final Success Screen -->
+    <div id="success-screen">
+        <!-- You can add the Octocat image here if you have one -->
+        <!-- Example using a placeholder: -->
+        <img src="https://github.githubassets.com/images/modules/logos_page/Octocat.png" alt="Octocat">
+        <p>Dashboard Initializing...</p>
+        <p>Welcome, Commander!</p>
+    </div>
+
+
+    <script>
+        const outputElement = document.getElementById('terminal-output');
+        const inputElement = document.getElementById('terminal-input');
+        const promptElement = document.getElementById('prompt');
+        const warpOverlay = document.getElementById('warp-overlay');
+        const successScreen = document.getElementById('success-screen');
+        const signupBox = document.getElementById('signup-box');
+        const starLayers = document.querySelectorAll('.stars');
+
+        let currentStep = 'welcome'; // 'welcome', 'id_input', 'password_input', 'done'
+        const userData = {};
+
+        // --- Typing Animation Function ---
+        function typeMessage(element, message, delay = 50) {
+            return new Promise(resolve => {
+                let i = 0;
+                element.textContent = ''; // Start empty
+                function typeChar() {
+                    if (i < message.length) {
+                        element.textContent += message.charAt(i);
+                        outputElement.scrollTop = outputElement.scrollHeight; // Scroll as text appears
+                        i++;
+                        setTimeout(typeChar, delay);
+                    } else {
+                        resolve(); // Resolve the promise when done
+                    }
+                }
+                typeChar(); // Start typing
+            });
+        }
+
+        // --- Starfield Generation ---
+        function createStars(selector, count, sizeSuffix) {
+            const starLayer = document.querySelector(selector);
+            let boxShadow = '';
+            for (let i = 0; i < count; i++) {
+                boxShadow += `${Math.random() * 100}vw ${Math.random() * 100}vh #FFF${i === count - 1 ? '' : ','}\n`;
+            }
+            starLayer.style.setProperty(`--stars-${sizeSuffix}`, boxShadow);
+        }
+
+        createStars('.stars', 700, 'small');
+        createStars('.stars.medium', 200, 'medium');
+        createStars('.stars.large', 100, 'large');
+
+
+        // --- Terminal Functions ---
+        function addOutput(message, type = 'system-message') {
+            const p = document.createElement('p');
+            p.className = type;
+            p.innerHTML = message;
+            outputElement.appendChild(p);
+            outputElement.scrollTop = outputElement.scrollHeight;
+        }
+
+        function addPromptLine(promptSymbol, userInput) {
+             const p = document.createElement('p');
+             p.className = 'prompt-line';
+             p.innerHTML = `<span class="prompt-symbol">${promptSymbol}</span><span class="user-input">${escapeHtml(userInput)}</span>`;
+             outputElement.appendChild(p);
+             outputElement.scrollTop = outputElement.scrollHeight;
+        }
+
+        function escapeHtml(unsafe) {
+            if (!unsafe) return '';
+            return unsafe
+                 .replace(/&/g, "&")
+                 .replace(/</g, "<")
+                 .replace(/>/g, ">")
+                 .replace(/"/g, '"')
+                 .replace(/'/g, "'");
+        }
+
+        function askForLoginId() {
+            // Clear previous input area if any
+            const oldInputPrompt = document.querySelector('.input-prompt');
+            if (oldInputPrompt) oldInputPrompt.remove();
+            
+            // Create and add the styled prompt
+            const promptDiv = document.createElement('div');
+            promptDiv.className = 'input-prompt';
+            promptDiv.textContent = "Enter your login ID";
+            outputElement.appendChild(promptDiv);
+            
+            // Update the input line with new design
+            promptElement.textContent = '→';
+            promptElement.style.color = '#ff66c4'; // Pink/magenta arrow
+            
+            // Add a continue button
+            const inputContainer = document.querySelector('.input-line');
+            let continueBtn = document.querySelector('.continue-btn');
+            if (!continueBtn) {
+                continueBtn = document.createElement('button');
+                continueBtn.className = 'continue-btn';
+                continueBtn.textContent = 'Continue';
+                continueBtn.onclick = function() {
+                    if (inputElement.value.trim()) {
+                        // Trigger Enter key event
+                        inputElement.dispatchEvent(new KeyboardEvent('keydown', {
+                            key: 'Enter',
+                            bubbles: true
+                        }));
+                    }
+                };
+                inputContainer.appendChild(continueBtn);
+            }
+            
+            inputElement.type = 'text';
+            inputElement.focus();
+            currentStep = 'id_input';
+        }
+
+        function askForPassword() {
+            // Clear previous input area if any
+            const oldInputPrompt = document.querySelector('.input-prompt');
+            if (oldInputPrompt) oldInputPrompt.remove();
+            
+            // Create and add the styled prompt
+            const promptDiv = document.createElement('div');
+            promptDiv.className = 'input-prompt';
+            promptDiv.textContent = "Enter your password";
+            outputElement.appendChild(promptDiv);
+            
+            // Update the input line with new design
+            promptElement.textContent = '→';
+            promptElement.style.color = '#ff66c4'; // Pink/magenta arrow
+            
+            inputElement.type = 'password';
+            inputElement.focus();
+            currentStep = 'password_input';
+        }
+
+        function validateInput(input) {
+            return input.trim().length > 0;
+        }
+
+        function validatePassword(password) {
+            return password.trim().length > 0; // Simple check for demo
+        }
+
+        // --- Warp Speed Effect ---
+        function triggerWarp() {
+            signupBox.classList.add('hidden'); // Hide terminal
+            warpOverlay.style.display = 'block';
+            warpOverlay.innerHTML = ''; // Clear previous stars if any
+
+            const numStars = 300;
+            for (let i = 0; i < numStars; i++) {
+                const star = document.createElement('div');
+                star.classList.add('warp-star');
+                // Position stars randomly, biased towards the center initially
+                const angle = Math.random() * Math.PI * 2;
+                const radius = Math.random() * Math.min(window.innerWidth, window.innerHeight) * 0.4; // Start closer to center
+                star.style.left = `${window.innerWidth / 2 + Math.cos(angle) * radius}px`;
+                star.style.top = `${window.innerHeight / 2 + Math.sin(angle) * radius}px`;
+
+                // Randomize animation duration and delay for variation
+                const duration = 1 + Math.random() * 1.5; // 1s to 2.5s
+                const delay = Math.random() * 0.5; // 0s to 0.5s delay
+
+                star.style.animation = `warp-travel ${duration}s ${delay}s ease-in forwards`;
+                warpOverlay.appendChild(star);
+            }
+
+            // After the warp effect (adjust timing based on animation)
+            setTimeout(() => {
+                warpOverlay.style.display = 'none'; // Hide warp
+                successScreen.style.display = 'flex'; // Show success screen
+                // Optional: Clean up stars from warp overlay
+                // warpOverlay.innerHTML = '';
+            }, 2500); // Should be slightly longer than max animation time (duration + delay)
+        }
+
+
+        // --- Input Event Listener ---
+        inputElement.addEventListener('keydown', (event) => {
+            if (event.key === 'Enter') {
+                const value = inputElement.value.trim();
+                addPromptLine(promptElement.textContent, (currentStep === 'password_input') ? '********' : value); // Mask password in output
+                inputElement.value = ''; // Clear input
+
+                switch (currentStep) {
+                    case 'id_input': // Was 'email'
+                        if (validateInput(value)) { // Use simplified validation
+                            userData.id = value;
+                            addOutput(`ID received: ${value}`, 'success-message');
+                            askForPassword();
+                        } else {
+                            addOutput(`Error: Login ID cannot be empty. Please try again.`, 'error-message');
+                            askForLoginId(); // Re-ask
+                        }
+                        break;
+
+                    case 'password_input': // Was 'password'
+                        if (validatePassword(value)) {
+                            // Don't store actual password in real app!
+                            userData.password = '********'; // Placeholder
+                            addOutput('Credentials verified. Logging in...', 'success-message');
+                            // Simulate login success and trigger warp
+                            inputElement.disabled = true;
+                            promptElement.textContent = '⚡';
+                            currentStep = 'done';
+                            triggerWarp();
+                        } else {
+                            addOutput('Error: Password cannot be empty.', 'error-message');
+                            askForPassword(); // Re-ask
+                        }
+                        break;
+                }
+            }
+        });
+
+        // --- Initialisation ---
+        async function startAdventure() { 
+            const welcomeLine1 = document.createElement('p');
+            welcomeLine1.className = 'system-message';
+            outputElement.appendChild(welcomeLine1);
+            await typeMessage(welcomeLine1, "Welcome to GOPIZZA WorkUp AI Login!");
+
+            const welcomeLine2 = document.createElement('p');
+            welcomeLine2.className = 'system-message';
+            outputElement.appendChild(welcomeLine2);
+            await typeMessage(welcomeLine2, "Let's begin the adventure...");
+
+            setTimeout(askForLoginId, 500); // Start with asking for ID
+        }
+
+        // Start the process when the page loads
+        window.onload = startAdventure;
+
+    </script>
+</body>
+</html>

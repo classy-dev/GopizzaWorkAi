@@ -1,0 +1,143 @@
+{
+  "env": {
+    "browser": true,
+    "es6": true,
+    "node": true
+  },
+  "parser": "@typescript-eslint/parser",
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "next/core-web-vitals",
+    "prettier"
+  ],
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  },
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
+  "plugins": ["@typescript-eslint", "import", "prettier", "unused-imports"],
+  "overrides": [
+    {
+      "files": ["*.ts", "*.tsx"],
+      "rules": {
+        "no-undef": "off"
+      }
+    }
+  ],
+  "rules": {
+    "react-hooks/rules-of-hooks": "error",
+    "react/jsx-no-useless-fragment": 0,
+    "import/prefer-default-export": "off",
+    "import/extensions": 0,
+    "import/no-unresolved": 0,
+    "prefer-arrow-callback": "off",
+    "no-var": "error",
+    "no-dupe-keys": "error",
+    "react/prop-types": "off",
+    "react/jsx-pascal-case": "off",
+    "camelcase": "off",
+    "no-param-reassign": "warn",
+    "react/no-array-index-key": "warn",
+    "no-plusplus": "warn",
+    "no-shadow": "warn",
+    "no-use-before-define": "off",
+    "default-param-last": "warn",
+    "jsx-a11y/control-has-associated-label": "warn",
+    "react/function-component-definition": "off",
+    "no-useless-catch": "warn",
+    "@typescript-eslint/no-explicit-any": "warn",
+    "react/jsx-props-no-spreading": "off",
+    "import/no-named-default": "off",
+    "react/react-in-jsx-scope": 0,
+    "react/prefer-stateless-function": 0,
+    "react/jsx-filename-extension": 0,
+    "react/jsx-one-expression-per-line": 0,
+    "no-nested-ternary": 0,
+    "@typescript-eslint/no-unused-vars": "warn",
+    "no-unused-vars": "off",
+    "@typescript-eslint/no-use-before-define": "off",
+    "unused-imports/no-unused-imports": "error",
+    "no-control-regex" : "warn",
+    "react/no-unescaped-entities" : "warn",
+    "unused-imports/no-unused-vars": [
+      "warn",
+      {
+        "vars": "all",
+        "varsIgnorePattern": "^_",
+        "args": "after-used",
+        "argsIgnorePattern": "^_"
+      }
+    ],
+    "jsx-a11y/label-has-associated-control": [
+      2,
+      {
+        "labelAttributes": ["htmlFor"]
+      }
+    ],
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "devDependencies": [
+          "**/*.stories.js",
+          "**/*.stories.jsx",
+          "**/*.stories.ts",
+          "**/*.stories.tsx"
+        ]
+      }
+    ],
+    "react/require-default-props": "off",
+    "import/order": [
+      "warn",
+      {
+        "groups": [
+          "builtin",
+          "external",
+          "internal",
+          ["parent", "sibling"],
+          "object",
+          "type",
+          "index"
+        ],
+        "pathGroups": [
+          {
+            "pattern": "react",
+            "group": "external",
+            "position": "before"
+          },
+          {
+            "pattern": "next/**",
+            "group": "external",
+            "position": "before"
+          },
+          {
+            "pattern": "@mui/**",
+            "group": "external",
+            "position": "after"
+          },
+          {
+            "pattern": "@/**",
+            "group": "internal",
+            "position": "after"
+          }
+        ],
+        "pathGroupsExcludedImportTypes": ["react", "next"],
+        "alphabetize": {
+          "order": "asc",
+          "caseInsensitive": true
+        },
+        "newlines-between": "never"
+      }
+    ]
+  },
+  "globals": {
+    "React": "writable"
+  }
+}

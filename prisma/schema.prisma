@@ -1,0 +1,73 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model User {
+  id         String   @id @default(cuid())
+  name       String
+  department String
+  userId     String   @unique
+  password   String
+  apiKey     String?
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+  isAdmin    Boolean  @default(false)
+  usages     Usage[]
+
+  @@map("users")
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+
+  @@map("sessions")
+}
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String?
+  access_token      String?
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String?
+  session_state     String?
+
+  @@unique([provider, providerAccountId])
+  @@map("accounts")
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+  @@map("verification_tokens")
+}
+
+model Usage {
+  id             String    @id @default(cuid())
+  userId         String
+  menuName       String    // 메뉴 이름 (예: "번역")
+  usageTime      DateTime  @default(now())
+  documentName   String?   // 문서 이름 (선택)
+  documentLength Int?      // 문서 길이 (선택)
+
+  user           User      @relation(fields: [userId], references: [id])
+
+  @@map("usages")
+}

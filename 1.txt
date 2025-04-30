@@ -1,0 +1,315 @@
+Donald Trump says he is ‘very angry’ with Vladimir Putin over Ukraine
+US president says his Russian counterpart’s questioning of Volodymyr Zelenskyy’s credibility could delay ceasefire
+Dan Sabbagh in Kyiv
+Sun 30 Mar 2025 18.47 BST
+
+ 
+
+Donald Trump has said he is “pissed off” with Vladimir Putin over his approach to a ceasefire in Ukraine and threatened to levy tariffs on Moscow’s oil exports if the Russian leader does not agree to a truce within a month.
+The US president indicated he would levy a 25% or 50% tariff that would affect countries buying Russian oil in a telephone interview with NBC News, during which he also threatened to bomb Iran and did not rule out using force in Greenland.
+“If Russia and I are unable to make a deal on stopping the bloodshed in Ukraine, and if I think it was Russia’s fault, which it might not be, but if I think it was Russia’s fault, I am going to put secondary tariffs on oil, on all oil coming out of Russia,” Trump said.
+
+Company	Contact	Country
+Alfreds Futterkiste	Maria Anders	Germany
+Centro comercial Moctezuma	Francisco Chang	Mexico
+Ernst Handel	Roland Mendel	Austria
+Island Trading	Helen Bennett	UK
+Laughing Bacchus Winecellars	Yoshi Tannamuri	Canada
+Magazzini Alimentari Riuniti	Giovanni Rovelli	Italy
+
+“That would be that if you buy oil from Russia, you can’t do business in the United States. There will be a 25% tariff on all … on all oil, a 25 to 50-point tariff on all oil.”
+
+
+OpenAI raises up to $40bn in record-breaking deal with SoftBank
+Japanese investment group says it wants to realise ‘artificial super intelligence’ – smarter than people – in biggest capital raising ever for a start-up
+Agencies
+Tue 1 Apr 2025 04.10 BST
+Share
+OpenAI said it had raised $40bn in a funding round that valued the ChatGPT maker at $300bn – the biggest capital-raising session ever for a startup.
+It comes in a partnership with the Japanese investment group SoftBank and “enables us to push the frontiers of AI research even further,” OpenAI announced, adding it would “pave the way toward AGI (artificial general intelligence)” for which “massive computing power is essential”.
+SoftBank said it wanted to realise “artificial super intelligence” (ASI) surpassing human intelligence and OpenAI was the partner closest to achieving that goal.
+SoftBank is to put $10bn at first into OpenAI and $30bn more by the end of 2025 if certain conditions are met.
+Also on Monday, OpenAI announced it was building a more open generative AI model as it faces growing competition in the open-source space from DeepSeek and Meta.
+
+ 
+Norwegian files complaint after ChatGPT falsely said he had murdered his children
+Read more
+
+OpenAI previously was a fierce defender of closed, proprietary models that do not allow developers to modify the basic technology to adapt AI to their goals. “We’ve been thinking about this for a long time, but other priorities took precedence. Now it feels important to do,” said the OpenAI chief executive, Sam Altman.
+OpenAI and defenders of closed models – which include Google – have often decried open models as riskier and more vulnerable to malicious and non-US government use.
+Elon Musk, a former OpenAI investor, has called on OpenAI to “return to the open-source, safety-focused force for good it once was”.
+Large companies and governments have proven reluctant to use AI models they have no control over, especially when data security is a concern. Meta and DeepSeek let companies download and modify their models.
+Meta’s CEO, Mark Zuckerberg, said this month that Llama had hit 1 bn downloads. DeepSeek’s lower-cost R1 model in January rocked the world of artificial intelligence.
+OpenAI has been riding on the success of its latest image-generation features in ChatGPT. Altman claimed the tool helped add “one million users” in one hour and overwhelmed OpenAI’s graphics processing units.
+
+Was this the week DeepSeek started the slow unwinding of the AI bet?
+This article is more than 1 month old
+Robert Booth and Dan Milmo
+
+ 
+
+
+
+The cheap Chinese chatbot has stunned tech giants – and opened up the possibility that other countries, not just China, could now afford to enter the AI race
+At 2.16pm California time last Sunday, the US billionaire tech investor Marc Andreessen called it. “DeepSeek R1 is AI’s Sputnik moment,” he posted on X.
+A Chinese startup, operating since 2023 and helmed by a millennial mathematician, had unveiled a new chatbot that seemed to equal the performance of America’s leading models at a fraction of the cost.
+Never mind that its answers on everything from the status of Taiwan to the 1989 Tiananmen Square massacre were curbed by Chinese Communist party (CCP) censors. To Andreessen, a veteran of decades of technology booms and busts, it was like the Soviet Union getting the first satellite into orbit in 1957 and shocking America.
+The next day, shares in several of the world’s biggest companies plunged – including the biggest fall in US market history for microchip maker Nvidia, which lost nearly $600bn. Investors believed DeepSeek’s achievement meant China would no longer need so many American chips; that US supremacy in AI was under threat or already over; and that the Silicon Valley giants, who had only a week earlier announced a $500bn AI investment plan, were spending much more money than they needed. The Chinese AI lab said the training cost for one of its base models had been just $5.6m.
+In the biggest week for AI since the launch of ChatGPT in November 2022, DeepSeek’s app, with its jaunty blue whale logo, became the most downloaded free app on Apple’s app stores in the US and UK as people rushed to find out what it was about.
+But was the world’s largest autocratic nation about to leapfrog the west in AI? What might it mean for control of a technology that many fear could be pressed into malicious use in cyber-attacks, the production of biological weapons and thought control? And given AI is widely considered to now be one of the main playing fields of geopolitical competition, where did this leave US hopes of maintaining supremacy by suppressing China’s progress with export bans on microchips that are key to progress?
+Tremors had been rumbling out of DeepSeek’s laboratory in Hangzhou, outside Shanghai, for a while. Some experts had been quietly impressed by the developments overseen by DeepSeek’s boss, Liang Wenfeng, a 40-year-old hedge fund entrepreneur. But it wasn’t until last Wednesday that a proper earthquake hit. The firm published a 22-page paper unveiling the DeepSeek R1 model, boasting of “powerful and intriguing reasoning behaviours” and saying it is comparable to Open AI’s 01 model, and even better in some areas.
+Liang was said to be on holiday as his team’s creation upended not just markets, but also the geopolitical calculus between the US and China
+While Google, Meta and OpenAI typically swaddle their new releases in marketing hype, DeepSeek’s matter-of-fact approach was clear from the soporific title of its announcement: “Incentivizing Reasoning Capability in LLMs via Reinforcement Learning”.
+The model was free to use and it seemed pioneering in the way it was engineered to be more efficient than ChatGPT-o1, OpenAI’s $20-a-month reasoning model. It used less computing power as it had been engineered only to activate the relevant part of the system to answer the query. Performance that cost other companies billions seemed to be available for millions.
+In response, OpenAI announced the launch of a new reasoning model, o3-Mini, on Friday that will be made available to all users, including people on ChatGPT’s free tier.
+Liang was said to be on holiday for lunar new year as his team’s creation upended not just markets, but also the geopolitical calculus between the US and China as they vie for supremacy in AI with all its economic, political and military potentials. Around the world, experts tried to make sense of how the Chinese had made necessity the mother of invention and found a way around a shortage of chips.
+Jimmy Goodrich, an adviser on technology to the Rand Corporation, told Reuters: “It’s been long known that DeepSeek has a really good team, and if they had access to even more compute, God knows how capable they would be.”
+“I confess I hadn’t heard of them,” said Michael Wooldridge, a professor of the foundations of AI at the University of Oxford. “[They] appear to have built something which is as capable as a GPT class model, not necessarily better, with something like a hundredth of the resources.”
+By midweek, DeepSeek had disappeared from app stores in Italy after the data protection regulator demanded reassurances
+He says the development “pulls the rug out from under Nvidia”, meaning a far greater number of developers can build AI models, making it a “much more accessible technology”.
+Mike Gualtieri, a principal analyst at Forrester Research, says that accessibility will widen the number of startups that can create their own AI models. But also, the bigger US tech players, with their considerable data processing firepower, could accelerate their own development.
+“The companies that already have a lot of chips, or access to them – the OpenAIs and the Googles – once they apply these [DeepSeek] techniques, they can experiment more rapidly,” he said.
+In London, hopes and fears were in conflict. The technology secretary, Peter Kyle, said he would not download the Chinese app, surely aware that anything he typed in or uploaded would be stored in China and that all Chinese firms are obliged under the national intelligence law to “support, assist and cooperate” with intelligence efforts.
+But, as a minister tasked with using AI to deliver economic growth, he was “really excited” by the breakthrough. It seemed to show that skills, rather than brute-force computing power funded by hundreds of billions of dollars, were more important than previously thought in making significant AI breakthroughs – good news for the research-heavy UK tech economy.
+By midweek, DeepSeek had disappeared from app stores for Google and Apple devices in Italy after the data protection regulator demanded reassurances about what personal data is collected. The Dublin Data Protection Commission also demanded from DeepSeek explanations about its “data processing conducted in relation to data subjects in Ireland”.
+When it ruminated on how “in China, the primary threat is the state itself”, the whole screed of “thinking” was deleted
+In the US, where Donald Trump signed an executive order to “solidify [the US] position as the leader in AI”, the arrival of DeepSeek was like a needle scratching across a record. Trump called it a “wake-up call for our industries that we need to be laser-focused on competing to win”. Or as one X user parsed his message: “Get back in the code mines.”
+It didn’t take long for suspicions to take hold. David Sacks, the White House AI adviser, said: “There’s substantial evidence that what DeepSeek did here is they distilled knowledge out of OpenAI models, and I don’t think OpenAI is very happy about this.”
+OpenAI’s founder, Sam Altman, said he thought it was “legit invigorating to have a new competitor”. But then, a day later, his company said it was “reviewing indications that DeepSeek may have inappropriately distilled our models”.
+It also became apparent that DeepSeek would censor itself in real time when its answers might be politically embarrassing or challenging for the CCP. In Brazil, one user showed how DeepSeek began thinking about a question about free speech in China by wondering whether to include issues like Beijing’s crackdown on protests in Hong Kong; the “persecution of human rights lawyers”; the “censorship of discussions on Xianjiang re-education camps”; and China’s “social credit system punishing dissenters”.
+Then, when it ruminated on how “in China, the primary threat is the state itself which actively suppresses dissent”, the whole screed of “thinking” was deleted and DeepSeek apologetically asked the user if he wouldn’t mind talking about maths or logic problems instead.
+Users could see what the chatbot really thought and the effect of the CCP on free speech; to see it all in action was unintentionally subversive.
+It was another week in which the strange world of AI got stranger and the stakes rose higher.
+
+Vercel Documentation
+Vercel is a developer cloud to build and deploy web applications.
+Start with an idea
+Vercel builds tools to help you create products faster.
+Like v0, which is your web development assistant. Paste a screenshot or write a few sentences and v0 will generate a starting point for your next app, including the code for how it looks and how it works. v0 then connects to Vercel, takes your code, and creates a URL you can share.
+Get started in minutes
+Deploy a Template
+View All Templates
+
+ 
+Next.js Boilerplate
+Get started with Next.js and React in seconds.
+
+ 
+Nuxt.js 3 Boilerplate
+A Nuxt.js 3 app, bootstrapped with create-nuxt-app.
+
+ 
+SvelteKit Boilerplate
+A SvelteKit app including nested routes, layouts, and page endpoints.
+
+Iterate quickly while building your product
+The first version of your product isn't perfect, so you need to iterate and try things.
+You can ask v0 to make updates for you, or if you prefer, export the code to your editor and start building locally. When you've finished adding your new feature, you want to test and make sure it works correctly on different browsers and devices before you update your live application.
+Vercel integrates with tools like GitHub where you can save snapshots of your codebase for every change. For example, let's say you send your latest code changes to GitHub in a pull request. Vercel automatically creates a new URL from your changes and sends you a link to review before merging.
+Infrastructure from your code
+How did that URL get created? Vercel took care of all the infrastructure automation for you:
+•	It examined your code to understand what tools you're working with
+•	It installed the necessary dependencies into a temporary, secure sandbox
+•	It ran compute to build your application from these dependencies
+•	It took the build output and generated the cloud infrastructure needed to run your app
+•	It assigned and secured a domain so you can access your app through a URL
+This is all happening inside of an automatically generated preview environment on Vercel — a place where you can safely iterate and make changes without affecting your application. For example, you might want to connect to a different database to prevent changing your live data.
+If your application works correctly and you're happy with the changes, you can merge this new feature into your main codebase. Once again, Vercel will automatically create and build a new URL for you, in a separate production environment.
+Just like that, your application is now live and updated around the world. Make a mistake? Don't sweat it — you can instantly go back to your previous version in a few clicks.
+Use your favorite developer tools
+Vercel helps your build any way your prefer, whether that is a handful of HTML files or a powerful JavaScript framework. While you don't need to use a framework, these abstractions can help you build better products.
+Frameworks include components and optimizations to help improve your Core Web Vitals, which is how search engines determine the speed and quality of your application. Your vitals affect your page ranking in search results, so it's important to pay attention and optimize them.
+Frameworks also simplify how you build common patterns, like routing between pages or fetching and displaying data from a database. Vercel supports over 30 different frameworks with zero-configuration.
+We are the creators and maintainers of Next.js, a framework for building React applications. We also help fund the full-time development of Svelte, as well as support other open-source frameworks.
+
+Next.js
+A React framework that gives you building blocks to create web applications.
+
+Turborepo
+A high-performance build system for JavaScript and TypeScript codebases.
+
+Vercel AI SDK
+An open source library for building AI-powered user interfaces.
+
+Stay fast and secure
+Vercel's developer platform understands the tools and frameworks you're using. This enables us to optimize and secure your application automatically in ways that are normally difficult and time consuming.
+Instead of manually writing code to define your application infrastructure, Vercel can automatically convert the output from your framework into infrastructure. For example, we manage:
+•	Networking: We help make your application fast globally
+•	Domains: We can manage your domains, including DNS, SSL certificates, and nameservers
+•	Storage: We offer cache and object storage, as well as first-party database integrations
+•	Compute: We provide an autoscaling, distributed, and secure compute platform
+•	CI/CD: We automatically deploy your application as you push to your git repository
+Observability
+After shipping your application, you need to understand how it's performing in production. Vercel includes tools to help you view logs and traces, measure performance, and analyze traffic.
+•	Logging: We allow you to view, search, and filter build/runtime logs to investigate issues and monitor your application.
+•	Tracing: We support integrations with tracing tools like OpenTelemetry for deeper performance analysis.
+•	Analytics: We support first-party, privacy-friendly analytics for understanding how users interact with your application.
+•	Metrics: We display and support querying of performance metrics like request counts, error rates, and API latencies.
+We also integrate with other observability tools and support draining logs to any service.
+Security
+Vercel helps protect your web application and prevent unwanted traffic.
+•	Platform Firewall: We automatically block malicious requests and unwanted bots before they reach your application.
+•	DDoS Protection: We protect your application from traffic spikes caused by Distributed Denial of Service (DDoS) attacks.
+•	Web Application Firewall: We allow you to define custom rules to protect from common attacks, web scrapers, and other unwanted traffic.
+We are compliant with SOC 2 Type 2, ISO 27001:2013, GDPR, PCI DSS, HIPAA, and other acronyms your security team asks about.
+Start building today
+Vercel provides tools to build your ideas. We integrate with dozens of popular databases, cloud infrastructure providers like AWS, and more.
+What will you ship?
+Last updated on April 1, 2025
+
+
+
+Next.js on Vercel
+Vercel is the native Next.js platform, designed to enhance the Next.js experience.
+Next.js is a fullstack React framework for the web, maintained by Vercel.
+While Next.js works when self-hosting, deploying to Vercel is zero-configuration and provides additional enhancements for scalability, availability, and performance globally.
+Getting started
+To get started with Next.js on Vercel:
+•	If you already have a project with Next.js, install Vercel CLI and run the vercel command from your project's root directory
+•	Clone one of our Next.js example repos to your favorite git provider and deploy it on Vercel with the button below:
+ Deploy our Next.js template, or view a live example.
+DeployLive Example
+•	Or, choose a template from Vercel's marketplace:
+Get started in minutes
+Deploy a new Next.js project with a template
+View All Templates
+
+ 
+Next.js App Router Playground
+Examples of many Next.js App Router features.
+
+ 
+Image Gallery Starter
+An image gallery built on Next.js and Cloudinary.
+
+ 
+Next.js Boilerplate
+Get started with Next.js and React in seconds.
+
+Vercel deployments can integrate with your git provider to generate preview URLs for each pull request you make to your Next.js project.
+Incremental Static Regeneration
+Incremental Static Regeneration (ISR) allows you to create or update content without redeploying your site. ISR has three main benefits for developers: better performance, improved security, and faster build times.
+When self-hosting, (ISR) is limited to a single region workload. Statically generated pages are not distributed closer to visitors by default, without additional configuration or vendoring of a CDN. By default, self-hosted ISR does not persist generated pages to durable storage. Instead, these files are located in the Next.js cache (which expires).
+To summarize, using ISR with Next.js on Vercel:
+•	Better performance with our global Edge Network
+•	Zero-downtime rollouts to previously statically generated pages
+•	Framework-aware infrastructure enables global content updates in 300ms
+•	Generated pages are both cached and persisted to durable storage
+Learn more about Incremental Static Regeneration (ISR)
+Server-Side Rendering (SSR)
+Server-Side Rendering (SSR) allows you to render pages dynamically on the server. This is useful for pages where the rendered data needs to be unique on every request. For example, checking authentication or looking at the location of an incoming request.
+On Vercel, you can server-render Next.js applications through Vercel Functions.
+To summarize, SSR with Next.js on Vercel:
+•	Scales to zero when not in use
+•	Scales automatically with traffic increases
+•	Has zero-configuration support for Cache-Control headers, including stale-while-revalidate
+•	Framework-aware infrastructure enables automatic creation of Functions for SSR
+
+
+Streaming
+Vercel supports streaming in Next.js projects with any of the following:
+•	Route Handlers
+•	Vercel Functions
+•	React Server Components
+Streaming data allows you to fetch information in chunks rather than all at once, speeding up Function responses. You can use streams to improve your app's user experience and prevent your functions from failing when fetching large files.
+Streaming with loading and Suspense
+In the Next.js App Router, you can use the loading file convention or a Suspense component to show an instant loading state from the server while the content of a route segment loads.
+The loading file provides a way to show a loading state for a whole route or route-segment, instead of just particular sections of a page. This file affects all its child elements, including layouts and pages. It continues to display its contents until the data fetching process in the route segment completes.
+
+Learn more about loading in the Next.js docs.
+The Suspense component, introduced in React 18, enables you to display a fallback until components nested within it have finished loading. Using Suspense is more granular than showing a loading state for an entire route, and is useful when only sections of your UI need a loading state.
+To summarize, using Streaming with Next.js on Vercel:
+•	Speeds up Function response times, improving your app's user experience
+•	Display initial loading UI with incremental updates from the server as new data becomes available
+Learn more about Streaming with Vercel Functions.
+Partial Prerendering
+Partial Prerendering as an experimental feature. It is currently not suitable for production environments.
+Partial Prerendering (PPR) is an experimental feature in Next.js that allows the static portions of a page to be pre-generated and served from the cache, while the dynamic portions are streamed in a single HTTP request.
+When a user visits a route:
+•	A static route shell is served immediately, this makes the initial load fast.
+•	The shell leaves holes where dynamic content will be streamed in to minimize the perceived overall page load time.
+•	The async holes are loaded in parallel, reducing the overall load time of the page.
+This approach is useful for pages like dashboards, where unique, per-request data coexists with static elements such as sidebars or layouts. This is different from how your application behaves today, where entire routes are either fully static or dynamic.
+See the Partial Prerendering docs to learn more.
+Image Optimization
+Image Optimization helps you achieve faster page loads by reducing the size of images and using modern image formats.
+When deploying to Vercel, images are automatically optimized on demand, keeping your build times fast while improving your page load performance and Core Web Vitals.
+When self-hosting, Image Optimization uses the default Next.js server for optimization. This server manages the rendering of pages and serving of static files.
+To use Image Optimization with Next.js on Vercel, import the next/image component into the component you'd like to add an image to, as shown in the following example:
+Next.js (/app)Next.js (/pages)
+components/ExampleComponent.tsx
+TypeScript
+TypeScriptJavaScript
+import Image from 'next/image' interface ExampleProps {  name: string;} const ExampleComponent = (props: ExampleProps) : => {  return (    <>      <Image        src="example.png"        alt="Example picture"        width={500}        height={500}      />      <span>{props.name}</span>    </>  )}
+To summarize, using Image Optimization with Next.js on Vercel:
+•	Zero-configuration Image Optimization when using next/image
+•	Helps your team ensure great performance by default
+•	Keeps your builds fast by optimizing images on-demand
+•	Requires No additional services needed to procure or set up
+Learn more about Image Optimization
+Font Optimization
+next/font enables built-in automatic self-hosting for any font file. This means you can optimally load web fonts with zero layout shift, thanks to the underlying CSS size-adjust property.
+This also allows you to use all Google Fonts with performance and privacy in mind. CSS and font files are downloaded at build time and self-hosted with the rest of your static files. No requests are sent to Google by the browser.
+
+To summarize, using Font Optimization with Next.js on Vercel:
+•	Enables built-in, automatic self-hosting for font files
+•	Loads web fonts with zero layout shift
+•	Allows for CSS and font files to be downloaded at build time and self-hosted with the rest of your static files
+•	Ensures that no requests are sent to Google by the browser
+Learn more about Font Optimization
+Open Graph Images
+Dynamic social card images (using the Open Graph protocol) allow you to create a unique image for every page of your site. This is useful when sharing links on the web through social platforms or through text message.
+The Vercel OG image generation library allows you generate fast, dynamic social card images using Next.js API Routes.
+The following example demonstrates using OG image generation in both the Next.js Pages and App Router:
+v0
+v0 converts natural language descriptions into code and UI. Build landing pages, full-stack apps, and more.
+v0 is a pair programmer that lets you describe your ideas in natural language and generates both the code and UI for your project. Anything you create with v0 can be deployed to Vercel.
+ v0 home page prompt input.
+You can use v0 to build anything from a simple landing page to a full-stack app:
+•	Landing pages
+•	Full-stack apps
+•	Blogs
+•	Chatbots
+•	Data analysis
+•	Customer support
+•	Solve problems
+•	Generate ideas
+•	Research keywords
+•	Draft email campaigns
+Getting started with v0
+v0 is free to use and you can get started with it by creating an account on v0.dev. v0 offers additional Premium and Ultra plans. See the pricing page for more information.
+More resources
+•	v0 documentation
+•	v0 example creations
+•	v0 FAQ
+•	v0 AI policy
+Last updated on March 13, 2025
+
+
+AI SDK
+TypeScript toolkit for building AI-powered applications with React, Next.js, Vue, Svelte and Node.js
+The AI SDK is the TypeScript toolkit designed to help developers build AI-powered applications with Next.js, Vue, Svelte, Node.js, and more. Integrating LLMs into applications is complicated and heavily dependent on the specific model provider you use.
+The AI SDK abstracts away the differences between model providers, eliminates boilerplate code for building chatbots, and allows you to go beyond text output to generate rich, interactive components.
+Generating text
+At the center of the AI SDK is AI SDK Core, which provides a unified API to call any LLM.
+Generating structured data
+While text generation can be useful, you might want to generate structured JSON data. For example, you might want to extract information from text, classify data, or generate synthetic data. AI SDK Core provides two functions (generateObject and streamObject) to generate structured data, allowing you to constrain model outputs to a specific schema.
+
+Build with AI on Vercel
+Integrate powerful AI services and models seamlessly into your Vercel projects.
+AI services and models help enhance and automate the building and deployment of applications for various use cases:
+•	Chatbots and virtual assistants improve customer interactions.
+•	AI-powered content generation automates and optimizes digital content.
+•	Recommendation systems deliver personalized experiences.
+•	Natural language processing (NLP) enables advanced text analysis and translation.
+•	Retrieval-augmented generation (RAG) enhances documentation with context-aware responses.
+•	AI-driven image and media services optimize visual content.
+Integrating with AI providers
+With Vercel AI integrations, you can build and deploy these AI-powered applications efficiently. Through the Vercel Marketplace, you can research which AI service fits your needs with example use cases. Then, you can install and manage two types of AI integrations:
+•	Native integrations: Built-in solutions that work seamlessly with Vercel and include resources with built-in billing and account provisioning.
+•	Connectable accounts: Third-party services you can link to your projects.
+Using AI integrations
+You can view your installed AI integrations by navigating to the AI tab of your Vercel dashboard. If you don't have installed integrations, you can browse and connect to the AI models and services that best fit your project's needs. Otherwise, you will see a list of your installed native and connectable account integrations, with an indication of which project(s) they are connected to. You will be able to browse available services, models and templates below the list of installed integrations.
+See the adding a provider guide to learn how to add a provider to your Vercel project, or the adding a model guide to learn how to add a model to your Vercel project.
+Featured AI integrations
+

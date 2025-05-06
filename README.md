@@ -1,5 +1,6 @@
 # GopizzaWorkAi - 고피자 AI 업무 지원 시스템
 
+![번역 이미지](/public/images/translate/thumb.png)
 
 ## 프로젝트 개요
 

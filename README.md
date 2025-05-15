@@ -16,7 +16,7 @@
 
 ## New Product Development
 
-<img src="public/images/thumb_npd.png" alt="GopizzaWorkAi" width="600"/> `
+<img src="public/images/thumb_npd.png" alt="GopizzaWorkAi" width="600"/> 
 
 </div>
 
@@ -151,6 +151,117 @@ GopizzaWorkAi/
 - **타입 안전성**: TypeScript와 완벽하게 통합된 타입 안전한 데이터 접근
 - **자동 마이그레이션**: 스키마 변경 사항을 자동으로 데이터베이스에 적용
 - **쿼리 빌더**: 직관적이고 강력한 데이터베이스 쿼리 빌더 제공
+
+#### Prisma 스키마 예시
+
+```prisma
+// prisma/schema.prisma
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model User {
+  id         String   @id @default(cuid())
+  name       String
+  department String
+  userId     String   @unique
+  password   String
+  apiKey     String?
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+  isAdmin    Boolean  @default(false)
+  usages     Usage[]
+
+  @@map("users")
+}
+
+model Usage {
+  id             String    @id @default(cuid())
+  userId         String
+  menuName       String    // 메뉴 이름 (예: "번역")
+  usageTime      DateTime  @default(now())
+  documentName   String?   // 문서 이름 (선택)
+  documentLength Int?      // 문서 길이 (선택)
+
+  user           User      @relation(fields: [userId], references: [id])
+
+  @@map("usages")
+}
+```
+
+#### Prisma 클라이언트 초기화
+
+```typescript
+// lib/prisma.ts
+import { PrismaClient } from '@prisma/client';
+
+// PrismaClient 인스턴스를 전역 변수로 선언 (개발 중 Hot Reload 문제 방지)
+const globalForPrisma = global as unknown as { prisma: PrismaClient };
+
+// 전역 객체에 prisma가 없다면 새로 생성
+export const prisma = globalForPrisma.prisma || new PrismaClient();
+
+// 개발 환경이 아니라면 전역 객체에 prisma 할당
+if (process.env.NODE_ENV !== 'production') globalForPrisma.prisma = prisma;
+```
+
+#### Prisma 사용 예시 (API 엔드포인트)
+
+```typescript
+// pages/api/user/profile.ts
+import { NextApiRequest, NextApiResponse } from 'next';
+import { prisma } from '@/lib/prisma';
+import { getServerSession } from 'next-auth';
+import { authOptions } from '../auth/[...nextauth]';
+
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+  const session = await getServerSession(req, res, authOptions);
+  
+  if (!session) {
+    return res.status(401).json({ message: '인증되지 않은 요청입니다.' });
+  }
+  
+  try {
+    // 사용자 정보 조회
+    const user = await prisma.user.findUnique({
+      where: { userId: session.user.id },
+      include: {
+        usages: {
+          orderBy: { usageTime: 'desc' },
+          take: 10
+        }
+      }
+    });
+    
+    if (!user) {
+      return res.status(404).json({ message: '사용자를 찾을 수 없습니다.' });
+    }
+    
+    // 사용량 통계 계산
+    const usageStatistics = await prisma.usage.groupBy({
+      by: ['menuName'],
+      where: { userId: user.id },
+      _count: { id: true },
+      _sum: { documentLength: true }
+    });
+    
+    return res.status(200).json({
+      user: {
+        name: user.name,
+        department: user.department,
+        isAdmin: user.isAdmin
+      },
+      recentUsages: user.usages,
+      usageStatistics
+    });
+  } catch (error) {
+    console.error('사용자 프로필 조회 오류:', error);
+    return res.status(500).json({ message: '서버 오류가 발생했습니다.' });
+  }
+}
+```
 
 ## 🚀 설치 및 실행 방법
 

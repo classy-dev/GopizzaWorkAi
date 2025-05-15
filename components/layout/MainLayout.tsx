@@ -14,6 +14,7 @@ import {
   KeyboardArrowRight,
 } from '@mui/icons-material';
 import GTranslateIcon from '@mui/icons-material/GTranslate';
+import SearchIcon from '@mui/icons-material/Search';
 import {
   AppBar,
   Toolbar,
@@ -65,26 +66,28 @@ const MainLayout: React.FC<MainLayoutProps> = observer(
     const router = useRouter();
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
     // 메뉴 펼침/접힘 상태 관리
-    const [openMenus, setOpenMenus] = React.useState<{[key: string]: boolean}>({});
-    
+    const [openMenus, setOpenMenus] = React.useState<{
+      [key: string]: boolean;
+    }>({});
+
     // 화면 크기에 따른 반응형 레이아웃을 위한 미디어 쿼리
     // md 사이즈 (960px) 이상일 경우 데스크톱으로 간주
     const isDesktop = useMediaQuery(theme.breakpoints.up('md'));
-    
+
     // 현재 URL에 따라 자동으로 해당 메뉴를 펼치는 효과
     React.useEffect(() => {
       // 메뉴에 하위 메뉴가 있는 경우, URL이 그 하위 항목 중 하나와 일치하는지 확인
       menuItems.forEach(item => {
         if (item.children) {
           // 각 하위 메뉴의 경로와 현재 URL을 비교
-          const shouldExpand = item.children.some(
-            child => router.pathname.startsWith(child.path)
+          const shouldExpand = item.children.some(child =>
+            router.pathname.startsWith(child.path)
           );
-          
+
           if (shouldExpand) {
             setOpenMenus(prev => ({
               ...prev,
-              [item.text]: true
+              [item.text]: true,
             }));
           }
         }
@@ -113,24 +116,29 @@ const MainLayout: React.FC<MainLayoutProps> = observer(
       await signOut({ redirect: false });
       router.push('/');
     };
-    
+
     // 하위 메뉴가 있는 메뉴 항목의 펼침/접힘 상태를 토글하는 함수
     const toggleMenu = (menuText: string, event: React.MouseEvent) => {
       event.stopPropagation(); // 상위 요소로 이벤트 전파 방지
       setOpenMenus(prev => ({
         ...prev,
-        [menuText]: !prev[menuText]
+        [menuText]: !prev[menuText],
       }));
     };
 
     const menuItems: MenuItemWithChildren[] = [
-      { 
-        text: '번역하기', 
-        icon: <GTranslateIcon />, 
+      {
+        text: '번역하기',
+        icon: <GTranslateIcon />,
         children: [
           { text: '소개', path: '/ai-translate' },
-          { text: '사용', path: '/ai-translate/use' }
-        ]
+          { text: '사용', path: '/ai-translate/use' },
+        ],
+      },
+      {
+        text: 'NPD 검색',
+        icon: <SearchIcon />,
+        path: '/npd',
       },
       { text: '설정', icon: <SettingsIcon />, path: '/settings' },
       { text: '정보', icon: <InfoIcon />, path: '/about' },
@@ -139,7 +147,11 @@ const MainLayout: React.FC<MainLayoutProps> = observer(
     // 관리자 전용 메뉴 아이템
     const adminMenuItems: MenuItemWithChildren[] = [
       { text: 'API 키 관리', icon: <SettingsIcon />, path: '/admin/api-keys' },
-      { text: '사용자 활동 로그', icon: <HomeIcon />, path: '/admin/usage-logs' },
+      {
+        text: '사용자 활동 로그',
+        icon: <HomeIcon />,
+        path: '/admin/usage-logs',
+      },
     ];
 
     const drawer = (
@@ -164,17 +176,21 @@ const MainLayout: React.FC<MainLayoutProps> = observer(
                   <ListItem disablePadding>
                     <Box
                       component="div"
-                      onClick={(e) => toggleMenu(item.text, e)}
+                      onClick={e => toggleMenu(item.text, e)}
                       sx={{
                         display: 'flex',
                         alignItems: 'center',
                         px: 2,
                         py: 1,
                         width: '100%',
-                        bgcolor:
-                          router.pathname.startsWith(item.children[0].path.split('/').slice(0, -1).join('/'))
-                            ? theme.palette.action.selected
-                            : 'transparent',
+                        bgcolor: router.pathname.startsWith(
+                          item.children[0].path
+                            .split('/')
+                            .slice(0, -1)
+                            .join('/')
+                        )
+                          ? theme.palette.action.selected
+                          : 'transparent',
                         '&:hover': { bgcolor: theme.palette.action.hover },
                         cursor: 'pointer',
                         justifyContent: 'space-between',
@@ -184,12 +200,20 @@ const MainLayout: React.FC<MainLayoutProps> = observer(
                         <ListItemIcon>{item.icon}</ListItemIcon>
                         <ListItemText primary={item.text} />
                       </Box>
-                      {openMenus[item.text] ? <KeyboardArrowDown /> : <KeyboardArrowRight />}
+                      {openMenus[item.text] ? (
+                        <KeyboardArrowDown />
+                      ) : (
+                        <KeyboardArrowRight />
+                      )}
                     </Box>
                   </ListItem>
-                  <Collapse in={openMenus[item.text]} timeout="auto" unmountOnExit>
+                  <Collapse
+                    in={openMenus[item.text]}
+                    timeout="auto"
+                    unmountOnExit
+                  >
                     <List component="div" disablePadding>
-                      {item.children.map((child) => (
+                      {item.children.map(child => (
                         <ListItem key={child.text} disablePadding>
                           <Link
                             href={child.path || '#'}
@@ -213,9 +237,14 @@ const MainLayout: React.FC<MainLayoutProps> = observer(
                                   router.pathname === child.path
                                     ? theme.palette.action.selected
                                     : 'transparent',
-                                textDecoration: router.pathname === child.path ? 'underline' : 'none',
+                                textDecoration:
+                                  router.pathname === child.path
+                                    ? 'underline'
+                                    : 'none',
                                 textUnderlineOffset: '3px',
-                                '&:hover': { bgcolor: theme.palette.action.hover },
+                                '&:hover': {
+                                  bgcolor: theme.palette.action.hover,
+                                },
                                 cursor: 'pointer',
                               }}
                             >
@@ -338,7 +367,7 @@ const MainLayout: React.FC<MainLayoutProps> = observer(
     return (
       <>
         <CssBaseline />
-        <AppBar 
+        <AppBar
           position="fixed"
           elevation={isDesktop ? 0 : 4}
           sx={{
@@ -349,7 +378,7 @@ const MainLayout: React.FC<MainLayoutProps> = observer(
               bgcolor: '#ffffff',
               color: '#0a3b41',
               borderBottom: '1px solid rgba(0, 0, 0, 0.05)',
-            })
+            }),
           }}
         >
           <Toolbar>
@@ -367,17 +396,17 @@ const MainLayout: React.FC<MainLayoutProps> = observer(
             <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
               {title}
             </Typography>
-            
+
             {session && (
               <>
                 <Tooltip title="계정 설정">
                   <IconButton onClick={handleMenuOpen} color="inherit">
                     <Avatar
-                      sx={{ 
-                        width: 32, 
-                        height: 32, 
+                      sx={{
+                        width: 32,
+                        height: 32,
                         bgcolor: theme.palette.primary.main,
-                        fontSize: '1rem'
+                        fontSize: '1rem',
                       }}
                     >
                       {session.user.name?.charAt(0)}
@@ -389,10 +418,12 @@ const MainLayout: React.FC<MainLayoutProps> = observer(
                   open={Boolean(anchorEl)}
                   onClose={handleMenuClose}
                 >
-                  <MenuItem onClick={() => {
-                    handleMenuClose();
-                    router.push('/profile');
-                  }}>
+                  <MenuItem
+                    onClick={() => {
+                      handleMenuClose();
+                      router.push('/profile');
+                    }}
+                  >
                     <ListItemIcon>
                       <AccountIcon fontSize="small" />
                     </ListItemIcon>
@@ -407,7 +438,7 @@ const MainLayout: React.FC<MainLayoutProps> = observer(
                 </Menu>
               </>
             )}
-            
+
             {/* <IconButton color="inherit" onClick={toggleDarkMode}>
               {theme.palette.mode === 'dark' ? (
                 <LightModeIcon />
@@ -431,7 +462,7 @@ const MainLayout: React.FC<MainLayoutProps> = observer(
               height: '100vh',
               bgcolor: '#0a3b41', // 이미지에 맞는 짙은 녹색/청록색 계열
               color: 'common.white',
-              zIndex: (theme) => theme.zIndex.drawer,
+              zIndex: theme => theme.zIndex.drawer,
               borderRight: '1px solid',
               borderColor: 'rgba(255, 255, 255, 0.1)',
               display: 'flex',
@@ -441,63 +472,69 @@ const MainLayout: React.FC<MainLayoutProps> = observer(
             }}
           >
             {/* 사이드바 로고 영역 */}
-            <Box 
-              sx={{ 
-                p: 3, 
-                display: 'flex', 
+            <Box
+              sx={{
+                p: 3,
+                display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
                 borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
-                mb: 2
+                mb: 2,
               }}
             >
-              <Typography 
-                variant="h5" 
-                component="div" 
-                sx={{ 
+              <Typography
+                variant="h5"
+                component="div"
+                sx={{
                   fontWeight: 'bold',
                   color: '#fff',
-                  letterSpacing: '0.5px'
+                  letterSpacing: '0.5px',
                 }}
               >
                 GOPIZZA WorkUp AI
               </Typography>
             </Box>
-            
+
             {/* 사용자 프로필 영역 */}
             {session && (
-              <Box 
-                sx={{ 
-                  px: 3, 
-                  py: 2, 
-                  display: 'flex', 
+              <Box
+                sx={{
+                  px: 3,
+                  py: 2,
+                  display: 'flex',
                   alignItems: 'center',
                   borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
-                  mb: 3
+                  mb: 3,
                 }}
               >
-                <Avatar 
-                  sx={{ 
-                    bgcolor: '#62e3d5', 
+                <Avatar
+                  sx={{
+                    bgcolor: '#62e3d5',
                     color: '#0a3b41',
-                    width: 40, 
+                    width: 40,
                     height: 40,
-                    mr: 2 
+                    mr: 2,
                   }}
                 >
                   {session.user.name?.charAt(0)}
                 </Avatar>
                 <Box>
-                  <Typography variant="subtitle1" sx={{ fontWeight: 'medium', color: '#fff' }}>
+                  <Typography
+                    variant="subtitle1"
+                    sx={{ fontWeight: 'medium', color: '#fff' }}
+                  >
                     {session.user.name}
                   </Typography>
-                  <Typography variant="body2" sx={{ color: 'rgba(255, 255, 255, 0.7)' }}>
+                  <Typography
+                    variant="body2"
+                    sx={{ color: 'rgba(255, 255, 255, 0.7)' }}
+                  >
                     {session.user.department}
                   </Typography>
                 </Box>
               </Box>
             )}
-            
+
             {/* 메뉴 영역 - 기존 drawer 내용을 사용하지 않고 새로 스타일링 */}
             <List sx={{ px: 2 }}>
               {menuItems.map(item => (
@@ -508,7 +545,7 @@ const MainLayout: React.FC<MainLayoutProps> = observer(
                       <ListItem disablePadding sx={{ mb: 1 }}>
                         <Box
                           component="div"
-                          onClick={(e) => toggleMenu(item.text, e)}
+                          onClick={e => toggleMenu(item.text, e)}
                           sx={{
                             display: 'flex',
                             alignItems: 'center',
@@ -516,41 +553,75 @@ const MainLayout: React.FC<MainLayoutProps> = observer(
                             py: 1.5,
                             width: '100%',
                             borderRadius: '8px',
-                            bgcolor:
-                              router.pathname.startsWith(item.children[0].path.split('/').slice(0, -1).join('/'))
-                                ? 'rgba(98, 227, 213, 0.2)'
-                                : 'transparent',
-                            '&:hover': { 
+                            bgcolor: router.pathname.startsWith(
+                              item.children[0].path
+                                .split('/')
+                                .slice(0, -1)
+                                .join('/')
+                            )
+                              ? 'rgba(98, 227, 213, 0.2)'
+                              : 'transparent',
+                            '&:hover': {
                               bgcolor: 'rgba(98, 227, 213, 0.1)',
-                              transition: 'all 0.3s ease'
+                              transition: 'all 0.3s ease',
                             },
                             cursor: 'pointer',
                             justifyContent: 'space-between',
                           }}
                         >
                           <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                            <ListItemIcon sx={{ minWidth: 40, color: router.pathname.startsWith('/ai-translate') ? '#62e3d5' : 'rgba(255, 255, 255, 0.7)' }}>
+                            <ListItemIcon
+                              sx={{
+                                minWidth: 40,
+                                color: router.pathname.startsWith(
+                                  '/ai-translate'
+                                )
+                                  ? '#62e3d5'
+                                  : 'rgba(255, 255, 255, 0.7)',
+                              }}
+                            >
                               {item.icon}
                             </ListItemIcon>
-                            <ListItemText 
-                              primary={item.text} 
-                              primaryTypographyProps={{ 
+                            <ListItemText
+                              primary={item.text}
+                              primaryTypographyProps={{
                                 fontSize: '0.95rem',
-                                fontWeight: router.pathname.startsWith('/ai-translate') ? 'medium' : 'normal',
-                                color: router.pathname.startsWith('/ai-translate') ? '#62e3d5' : '#fff'
-                              }} 
+                                fontWeight: router.pathname.startsWith(
+                                  '/ai-translate'
+                                )
+                                  ? 'medium'
+                                  : 'normal',
+                                color: router.pathname.startsWith(
+                                  '/ai-translate'
+                                )
+                                  ? '#62e3d5'
+                                  : '#fff',
+                              }}
                             />
                           </Box>
-                          {openMenus[item.text] ? 
-                            <KeyboardArrowDown sx={{ color: 'rgba(255, 255, 255, 0.7)' }} /> : 
-                            <KeyboardArrowRight sx={{ color: 'rgba(255, 255, 255, 0.7)' }} />
-                          }
+                          {openMenus[item.text] ? (
+                            <KeyboardArrowDown
+                              sx={{ color: 'rgba(255, 255, 255, 0.7)' }}
+                            />
+                          ) : (
+                            <KeyboardArrowRight
+                              sx={{ color: 'rgba(255, 255, 255, 0.7)' }}
+                            />
+                          )}
                         </Box>
                       </ListItem>
-                      <Collapse in={openMenus[item.text]} timeout="auto" unmountOnExit>
+                      <Collapse
+                        in={openMenus[item.text]}
+                        timeout="auto"
+                        unmountOnExit
+                      >
                         <List component="div" disablePadding>
-                          {item.children.map((child) => (
-                            <ListItem key={child.text} disablePadding sx={{ pl: 2 }}>
+                          {item.children.map(child => (
+                            <ListItem
+                              key={child.text}
+                              disablePadding
+                              sx={{ pl: 2 }}
+                            >
                               <Link
                                 href={child.path || '#'}
                                 passHref
@@ -570,23 +641,35 @@ const MainLayout: React.FC<MainLayoutProps> = observer(
                                     py: 1,
                                     width: '100%',
                                     borderRadius: '8px',
-                                    color: router.pathname === child.path ? '#62e3d5' : '#fff',
-                                    textDecoration: router.pathname === child.path ? 'underline' : 'none',
+                                    color:
+                                      router.pathname === child.path
+                                        ? '#62e3d5'
+                                        : '#fff',
+                                    textDecoration:
+                                      router.pathname === child.path
+                                        ? 'underline'
+                                        : 'none',
                                     textUnderlineOffset: '3px',
-                                    '&:hover': { 
+                                    '&:hover': {
                                       bgcolor: 'rgba(98, 227, 213, 0.1)',
-                                      transition: 'all 0.3s ease'
+                                      transition: 'all 0.3s ease',
                                     },
                                     cursor: 'pointer',
                                   }}
                                 >
-                                  <ListItemText 
-                                    primary={child.text} 
-                                    primaryTypographyProps={{ 
+                                  <ListItemText
+                                    primary={child.text}
+                                    primaryTypographyProps={{
                                       fontSize: '0.95rem',
-                                      fontWeight: router.pathname === child.path ? 'medium' : 'normal',
-                                      color: router.pathname === child.path ? '#62e3d5' : '#fff',
-                                    }} 
+                                      fontWeight:
+                                        router.pathname === child.path
+                                          ? 'medium'
+                                          : 'normal',
+                                      color:
+                                        router.pathname === child.path
+                                          ? '#62e3d5'
+                                          : '#fff',
+                                    }}
                                   />
                                 </Box>
                               </Link>
@@ -619,23 +702,37 @@ const MainLayout: React.FC<MainLayoutProps> = observer(
                               router.pathname === item.path
                                 ? 'rgba(98, 227, 213, 0.2)'
                                 : 'transparent',
-                            '&:hover': { 
+                            '&:hover': {
                               bgcolor: 'rgba(98, 227, 213, 0.1)',
-                              transition: 'all 0.3s ease'
+                              transition: 'all 0.3s ease',
                             },
                             cursor: 'pointer',
                           }}
                         >
-                          <ListItemIcon sx={{ minWidth: 40, color: router.pathname === item.path ? '#62e3d5' : 'rgba(255, 255, 255, 0.7)' }}>
+                          <ListItemIcon
+                            sx={{
+                              minWidth: 40,
+                              color:
+                                router.pathname === item.path
+                                  ? '#62e3d5'
+                                  : 'rgba(255, 255, 255, 0.7)',
+                            }}
+                          >
                             {item.icon}
                           </ListItemIcon>
-                          <ListItemText 
-                            primary={item.text} 
-                            primaryTypographyProps={{ 
+                          <ListItemText
+                            primary={item.text}
+                            primaryTypographyProps={{
                               fontSize: '0.95rem',
-                              fontWeight: router.pathname === item.path ? 'medium' : 'normal',
-                              color: router.pathname === item.path ? '#62e3d5' : '#fff'
-                            }} 
+                              fontWeight:
+                                router.pathname === item.path
+                                  ? 'medium'
+                                  : 'normal',
+                              color:
+                                router.pathname === item.path
+                                  ? '#62e3d5'
+                                  : '#fff',
+                            }}
                           />
                         </Box>
                       </Link>
@@ -643,7 +740,7 @@ const MainLayout: React.FC<MainLayoutProps> = observer(
                   )}
                 </React.Fragment>
               ))}
-              
+
               {/* 로그아웃 버튼 */}
               {session && (
                 <ListItem disablePadding sx={{ mt: 2 }}>
@@ -657,33 +754,42 @@ const MainLayout: React.FC<MainLayoutProps> = observer(
                       py: 1.5,
                       width: '100%',
                       borderRadius: '8px',
-                      '&:hover': { 
+                      '&:hover': {
                         bgcolor: 'rgba(255, 77, 77, 0.1)',
-                        transition: 'all 0.3s ease'
+                        transition: 'all 0.3s ease',
                       },
                       cursor: 'pointer',
                     }}
                   >
-                    <ListItemIcon sx={{ minWidth: 40, color: 'rgba(255, 255, 255, 0.7)' }}>
+                    <ListItemIcon
+                      sx={{ minWidth: 40, color: 'rgba(255, 255, 255, 0.7)' }}
+                    >
                       <LogoutIcon />
                     </ListItemIcon>
-                    <ListItemText 
-                      primary="로그아웃" 
-                      primaryTypographyProps={{ 
+                    <ListItemText
+                      primary="로그아웃"
+                      primaryTypographyProps={{
                         fontSize: '0.95rem',
-                        color: '#fff'
-                      }} 
+                        color: '#fff',
+                      }}
                     />
                   </Box>
                 </ListItem>
               )}
             </List>
-            
+
             {/* 관리자 메뉴 영역 */}
             {session?.user?.isAdmin && (
               <>
                 <Box sx={{ px: 3, py: 2, mt: 2 }}>
-                  <Typography variant="subtitle2" sx={{ color: 'rgba(255, 255, 255, 0.5)', fontWeight: 'medium', letterSpacing: '0.5px' }}>
+                  <Typography
+                    variant="subtitle2"
+                    sx={{
+                      color: 'rgba(255, 255, 255, 0.5)',
+                      fontWeight: 'medium',
+                      letterSpacing: '0.5px',
+                    }}
+                  >
                     관리자 메뉴
                   </Typography>
                 </Box>
@@ -712,23 +818,37 @@ const MainLayout: React.FC<MainLayoutProps> = observer(
                               router.pathname === item.path
                                 ? 'rgba(98, 227, 213, 0.2)'
                                 : 'transparent',
-                            '&:hover': { 
+                            '&:hover': {
                               bgcolor: 'rgba(98, 227, 213, 0.1)',
-                              transition: 'all 0.3s ease'
+                              transition: 'all 0.3s ease',
                             },
                             cursor: 'pointer',
                           }}
                         >
-                          <ListItemIcon sx={{ minWidth: 40, color: router.pathname === item.path ? '#62e3d5' : 'rgba(255, 255, 255, 0.7)' }}>
+                          <ListItemIcon
+                            sx={{
+                              minWidth: 40,
+                              color:
+                                router.pathname === item.path
+                                  ? '#62e3d5'
+                                  : 'rgba(255, 255, 255, 0.7)',
+                            }}
+                          >
                             {item.icon}
                           </ListItemIcon>
-                          <ListItemText 
-                            primary={item.text} 
-                            primaryTypographyProps={{ 
+                          <ListItemText
+                            primary={item.text}
+                            primaryTypographyProps={{
                               fontSize: '0.95rem',
-                              fontWeight: router.pathname === item.path ? 'medium' : 'normal',
-                              color: router.pathname === item.path ? '#62e3d5' : '#fff'
-                            }} 
+                              fontWeight:
+                                router.pathname === item.path
+                                  ? 'medium'
+                                  : 'normal',
+                              color:
+                                router.pathname === item.path
+                                  ? '#62e3d5'
+                                  : '#fff',
+                            }}
                           />
                         </Box>
                       </Link>
@@ -740,7 +860,11 @@ const MainLayout: React.FC<MainLayoutProps> = observer(
           </Box>
         ) : (
           // 모바일용 토글 가능한 Drawer
-          <Drawer anchor="left" open={uiStore.isDrawerOpen} onClose={toggleDrawer}>
+          <Drawer
+            anchor="left"
+            open={uiStore.isDrawerOpen}
+            onClose={toggleDrawer}
+          >
             {drawer}
           </Drawer>
         )}
@@ -760,14 +884,14 @@ const MainLayout: React.FC<MainLayoutProps> = observer(
             }),
           }}
         >
-          <Container 
-            maxWidth="lg" 
-            sx={{ 
+          <Container
+            maxWidth="lg"
+            sx={{
               py: 12,
               ...(isDesktop && {
-                px: 4,  // 데스크톱에서 여백 조정
+                px: 4, // 데스크톱에서 여백 조정
                 maxWidth: '100%', // 데스크톱에서는 컨테이너 제한 없이 사용
-              })
+              }),
             }}
           >
             {children}
